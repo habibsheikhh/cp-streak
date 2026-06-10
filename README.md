@@ -1,4 +1,4 @@
-# CP Journey
+# Just CP
 
 A collection of my Competitive Programming solutions from various platforms.
 
