@@ -1,0 +1,38 @@
+# VS Code
+.vscode/
+
+# Compiled binaries
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.dll
+*.so
+*.dylib
+
+# Temporary files
+*.tmp
+*.temp
+
+# Input/Output files used for local testing
+input.txt
+output.txt
+
+# Logs
+*.log
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Build directories
+build/
+bin/
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
