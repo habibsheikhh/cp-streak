@@ -10,34 +10,40 @@ void solve() {
     string s;
     cin >> s;
 
-    vector<int> v(n);
-    int cnt = 0;
-    int minIdx = n;
-    int mini = INT_MAX;
+    vector<int> pre(n+1, 0);
+    vector<int> suf(n+1, 0);
+
     for(int i=0; i<n; i++) {
-        if(s[i] == '(') cnt++;
-        else cnt--;
-        v[i] = cnt;
-        if(cnt < mini) {
-            mini = cnt;
-            minIdx = i;
+        pre[i+1] = pre[i] + (s[i]=='(');
+    }
+    for(int i=n-1; i>=0; i--) {
+        suf[i] = suf[i+1] + (s[i]==')');
+    }
+
+    int best = INT_MAX;
+    int cut = 0;
+
+    for(int i=0; i<=n; i++) {
+        int curr = pre[i] + suf[i];
+        if(best > curr) {
+            cut = i;
+            best = curr;
         }
     }
 
-    vector<int> ans(n);
-    for(int i=0; i<n; i++) {
-        if(k > 0 && ((i <= minIdx && s[i] == '(') || (i > minIdx && s[i] == ')'))) {
-            ans[i] = 1;
-            k--;
+    string ans(n, '0');
+
+    int rem = k;
+
+    for(int i=0; i<n && rem > 0; i++) {
+        if(i < cut && s[i]=='(') {
+            ans[i] = '1'; rem--;
+        } else if (i >= cut && s[i]==')') {
+            ans[i] = '1'; rem--;
         }
-        else ans[i] = 0;
     }
 
-    for(int i=0; i<n; i++) {
-        cout << ans[i];
-    }
-
-    cout << endl;
+    cout << ans << '\n';
 
 }
 
