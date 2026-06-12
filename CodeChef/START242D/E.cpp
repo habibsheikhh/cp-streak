@@ -65,7 +65,7 @@ void solve() {
         int op,l,r;
         cin >> op >> l >> r;
 
-
+        
         // WILL UPSOLVE
     }
 }
